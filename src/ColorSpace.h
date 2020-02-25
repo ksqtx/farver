@@ -6,7 +6,9 @@
 
 namespace ColorSpace {
 	struct IColorSpace {
-		IColorSpace() {}
+		IColorSpace() {
+			valid = true;
+		}
 		virtual ~IColorSpace() {}
 
 		virtual void Initialize(Rgb *color) = 0;
@@ -16,7 +18,7 @@ namespace ColorSpace {
 		template <typename TColorSpace>
 		void To(TColorSpace *color);
 		
-		bool valid = true;
+		bool valid;
 	};
 
 

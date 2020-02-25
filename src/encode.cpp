@@ -37,7 +37,7 @@ inline std::string prepare_code(const char* col) {
     if (col_num == 0) {
       code = "0";
     } else {
-      code = std::to_string(((col_num - 1) % 8) + 1);
+      code = std::to_string(static_cast<long long>((col_num - 1) % 8) + 1);
     }
   }
   // Remove whitespace

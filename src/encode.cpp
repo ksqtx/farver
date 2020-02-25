@@ -42,8 +42,7 @@ inline std::string prepare_code(const char* col) {
   }
   // Remove whitespace
   code.erase(std::remove(code.begin(), code.end(), ' '), code.end());
-  std::transform(code.begin(), code.end(), code.begin(),
-                 [](unsigned char c){ return std::tolower(c); });
+  std::transform(code.begin(), code.end(), code.begin(), std::tolower);
   return code;
 }
 

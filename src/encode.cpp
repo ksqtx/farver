@@ -30,6 +30,16 @@ inline int hex2int(const int x) {
   }
   return (x & 0xf) + (x >> 6) + ((x >> 6) << 3);
 }
+
+namespace {
+  struct tolower_struct {
+    int operator()(unsigned char c) {
+      return std::tolower(c);
+    }
+  };
+}
+
+
 inline std::string prepare_code(const char* col) {
   std::string code(col);
   if (isdigit(col[0])) {
@@ -42,7 +52,8 @@ inline std::string prepare_code(const char* col) {
   }
   // Remove whitespace
   code.erase(std::remove(code.begin(), code.end(), ' '), code.end());
-  std::transform(code.begin(), code.end(), code.begin(), std::tolower);
+  tolower_struct tolower_struct;
+  std::transform(code.begin(), code.end(), code.begin(), tolower_struct);
   return code;
 }
 
